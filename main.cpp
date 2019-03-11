@@ -11,7 +11,7 @@ private:
         bool empty;
         std::string Q;
         std::string word;
-        std::string in;
+        std::string out;
         bucket *next;
     };
     bucket **hashTable;
@@ -49,7 +49,7 @@ void Hash::pushBucket(const std::string& Q, const std::string& word, const std::
         hashTable[index]->empty = false;
         hashTable[index]->Q = Q;
         hashTable[index]->word = word;
-        hashTable[index]->in = in;
+        hashTable[index]->out = in;
     }
     else {
         bucket *p = hashTable[index];
@@ -57,7 +57,7 @@ void Hash::pushBucket(const std::string& Q, const std::string& word, const std::
         new_bucket->empty = false;
         new_bucket->Q = Q;
         new_bucket->word = word;
-        new_bucket->in = in;
+        new_bucket->out = in;
 
         while (p->next != nullptr) {
             p = p->next;
@@ -78,10 +78,19 @@ std::string Hash::getBucket(std::string Q, std::string word) {
     bucket *p = hashTable[index];
     while(p != nullptr) {
         if(p->word == word && p->Q == Q)
-            return p->in;
+            return p->out;
         p = p->next;
     }
     return "";
+}
+
+void read(std::vector<std::string>& v, unsigned& n) {
+    std::string temp;
+    std::cin >> n;
+    for(unsigned i = 0; i < n; i ++) {
+        std::cin >> temp;
+        v.push_back(temp);
+    }
 }
 
 
@@ -97,22 +106,12 @@ int main() {
     unsigned nQ, nF, nSigma, nDelta , i;
     std::string q0, temp, word, temp2, temp3;
 
-    std::cin >> nQ;
-    for(i = 0; i < nQ; i ++) {
-        std::cin >> temp;
-        Q.push_back(temp);
-    }
-    std::cin >> nSigma;
-    for (i = 0; i < nSigma; i ++) {
-        std::cin >> temp;
-        Sigma.push_back(temp);
-    }
+
+    read(Q, nQ);
+    read(Sigma, nSigma);
     std::cin >> q0;
-    std::cin >> nF;
-    for(i = 0; i < nF; i ++) {
-        std::cin >> temp;
-        F.push_back(temp);
-    }
+    read(F, nF);
+
     std::cin >> nDelta;
 
     for(i = 0; i < nDelta; i ++) {
