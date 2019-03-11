@@ -37,7 +37,7 @@ Hash::Hash() {
 unsigned Hash::createHash(std::string key) {
     unsigned hash = 0, index, i;
     for(char& character : key) {
-        hash += character;
+        hash += character * 17;
     }
     index = hash % hashSize;
     return index;
