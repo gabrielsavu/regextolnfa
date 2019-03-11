@@ -21,7 +21,7 @@ public:
     unsigned createHash(std::string);
     void pushBucket(const std::string&, const std::string&, const std::string&);
     std::string getBucket(std::string, std::string);
-    bool checkBucket(const std::string&, const std::string&);
+    inline bool checkBucket(const std::string&, const std::string&);
 
 };
 
@@ -67,7 +67,7 @@ void Hash::pushBucket(const std::string& Q, const std::string& word, const std::
 
 }
 
-bool Hash::checkBucket(const std::string& Q, const std::string& word) {
+inline bool Hash::checkBucket(const std::string& Q, const std::string& word) {
     unsigned index = createHash(Q + word);
     return hashTable[index]->empty;
 }
