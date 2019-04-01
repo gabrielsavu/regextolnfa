@@ -16,7 +16,7 @@ bool LNFA::checkWord(std::string word) {
     std::vector<std::string> finals_threads;
     /*
      * <position, state>
-     * daca intru in in aceasi stare cu aceasi pozitie din cuvant, sigur este un ciclu.
+     * daca intru in in aceeasi stare cu aceeasi pozitie din cuvant, sigur este un ciclu.
      */
     std::vector<std::pair<unsigned, std::string > > visited;
     que.push(std::make_pair(0 ,std::make_pair(q0, std::string(1, word[0]))));
@@ -39,7 +39,7 @@ bool LNFA::checkWord(std::string word) {
 
             }
             for (auto &states : lambdaClosure(que.front().second.first)) {
-
+                //verificare cilcu
                 auto it = std::find_if(visited.begin(), visited.end(), [&](std::pair<unsigned, std::string> const & ref) {
                     return ref.first == que.front().first && ref.second == states;
                 });

@@ -21,9 +21,45 @@ protected:
     unsigned nDelta;
     Hash Delta;
 public:
-    static void read(std::istream &input, std::vector<std::string>&, unsigned&);
+    std::vector<std::string> getQ ();
 
-    friend std::istream &operator >>(std::istream&, Automata&);
+    void setQ (const std::vector<std::string> &);
+
+    std::vector<std::string> getF ();
+
+    void setF (const std::vector<std::string> &);
+
+    std::vector<std::string> getSigma ();
+
+    void setSigma (const std::vector<std::string> &);
+
+    std::string getq0 ();
+
+    void setq0 (const std::string &);
+
+    unsigned getnQ ();
+
+    void setnQ (const unsigned &);
+
+    unsigned getnF ();
+
+    void setnF (const unsigned &);
+
+    unsigned getnSigma ();
+
+    void setnSigma (const unsigned &);
+
+    unsigned getnDelta ();
+
+    void setnDelta (const unsigned &);
+
+    Hash getDelta ();
+
+    void setDelta (const Hash &);
+
+    static void read (std::istream &input, std::vector<std::string>&, unsigned&);
+
+    friend std::istream &operator >> (std::istream&, Automata&);
 };
 
 #endif //DFA_AUTOMATA_H

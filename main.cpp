@@ -6,11 +6,15 @@
 #include "hash.h"
 #include "dfa.h"
 #include "lnfa.h"
+#include "regex.h"
 
 int main() {
 
+    Regex r;
+    r.regexToLNFA("aaa");
 
-    std::ifstream in("in.in");
+
+    /*std::ifstream in("in.in");
     std::ofstream out("out.out");
     LNFA d;
     std::string word;
@@ -20,6 +24,6 @@ int main() {
     for (unsigned j = 0; j < n ; j ++) {
         in >> word;
         out << (d.checkWord(word) ? "DA" : "NU") << std::endl;
-    }
+    }*/
     return 0;
 }

@@ -10,7 +10,7 @@
 #include "hash.h"
 #include "automata.h"
 
-class LNFA: private Automata {
+class LNFA: public Automata {
 private:
 
 public:
