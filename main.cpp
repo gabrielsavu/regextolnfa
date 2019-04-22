@@ -11,19 +11,10 @@
 int main() {
 
     Regex r;
-    r.regexToLNFA("aaa");
+    LNFA *l = r.regexToLNFA("ab*");
+    if (l != nullptr) std::cout << *l;
+    else std::cout << "Invalid expression.";
+    //std::cout << l->checkWord("a");
 
-
-    /*std::ifstream in("in.in");
-    std::ofstream out("out.out");
-    LNFA d;
-    std::string word;
-    in >> d;
-    unsigned n;
-    in >> n;
-    for (unsigned j = 0; j < n ; j ++) {
-        in >> word;
-        out << (d.checkWord(word) ? "DA" : "NU") << std::endl;
-    }*/
     return 0;
 }

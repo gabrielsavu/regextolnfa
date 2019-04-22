@@ -7,6 +7,7 @@
 
 #include "lnfa.h"
 #include <stack>
+#include <map>
 
 class Regex {
 private:
@@ -14,7 +15,7 @@ private:
 public:
     bool isOperator (char);
 
-    LNFA regexToLNFA (const std::string &);
+    LNFA* regexToLNFA (const std::string &);
 
 };
 

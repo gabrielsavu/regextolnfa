@@ -16,8 +16,8 @@ bool DFA::checkWord (std::string word) {
     i = 0;
     bool incomplete = false;
     while (i < word.length()) {
-        if(!Delta.checkBucket(q, std::string(1, word[i]))) {
-            q = Delta.getBucket(q, std::string(1, word[i])).back();
+        if(!Delta->checkBucket(q, std::string(1, word[i]))) {
+            q = Delta->getBucket(q, std::string(1, word[i])).back();
             i++;
         }
         else {

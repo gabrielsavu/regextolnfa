@@ -7,6 +7,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <map>
 #include <algorithm>
 
 class Hash {
@@ -24,6 +25,10 @@ private:
 public:
     Hash();
 
+    ~Hash();
+
+    Hash(const Hash &);
+
     static unsigned createHash(std::string);
 
     void pushBucket(const std::string&, const std::string&, const std::string&);
@@ -31,6 +36,10 @@ public:
     std::vector<std::string> getBucket(std::string, std::string);
 
     bool checkBucket(const std::string&, const std::string&);
+
+    Hash* concatenate(Hash*);
+
+    friend std::ostream &operator << (std::ostream&, Hash&);
 
 };
 

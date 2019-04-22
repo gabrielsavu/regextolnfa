@@ -7,6 +7,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <algorithm>
 #include "hash.h"
 
 class Automata {
@@ -19,11 +20,19 @@ protected:
     unsigned nF;
     unsigned nSigma;
     unsigned nDelta;
-    Hash Delta;
+    Hash *Delta;
 public:
+    Automata();
+
+    Automata(const Automata &obj);
+
+    ~Automata();
+
     std::vector<std::string> getQ ();
 
     void setQ (const std::vector<std::string> &);
+
+    void pushQ (const std::string&);
 
     std::vector<std::string> getF ();
 
@@ -32,6 +41,8 @@ public:
     std::vector<std::string> getSigma ();
 
     void setSigma (const std::vector<std::string> &);
+
+    void concatenateSigma (const std::vector<std::string> &);
 
     std::string getq0 ();
 
@@ -53,13 +64,15 @@ public:
 
     void setnDelta (const unsigned &);
 
-    Hash getDelta ();
+    Hash* getDelta ();
 
-    void setDelta (const Hash &);
+    void setDelta (Hash*);
 
     static void read (std::istream &input, std::vector<std::string>&, unsigned&);
 
     friend std::istream &operator >> (std::istream&, Automata&);
+
+    friend std::ostream &operator << (std::ostream&, Automata&);
 };
 
 #endif //DFA_AUTOMATA_H

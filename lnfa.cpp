@@ -4,11 +4,16 @@
 
 #include "lnfa.h"
 
-std::istream &operator >> (std::istream &input, LNFA &obj ) {
+std::istream &operator >> (std::istream &input, LNFA &obj) {
     input >> (Automata&)obj;
     return input;
 }
 
+
+std::ostream &operator << (std::ostream &output, LNFA &obj) {
+    output << (Automata&)obj;
+    return output;
+}
 
 bool LNFA::checkWord(std::string word) {
     //<position,<state, word>>
@@ -25,10 +30,11 @@ bool LNFA::checkWord(std::string word) {
             if (std::find(F.begin(), F.end(), que.front().second.first) != F.end()) {
                 return true;
             }
+            //std::cout << que.front().second.first;
         }
         else {
-            if (!Delta.checkBucket(que.front().second.first, que.front().second.second)) {
-                for (auto &states : Delta.getBucket(que.front().second.first,
+            if (!Delta->checkBucket(que.front().second.first, que.front().second.second)) {
+                for (auto &states : Delta->getBucket(que.front().second.first,
                                                     std::string(1, word[que.front().first]))) {
                     if (que.front().second.second != ".")
                         que.push(std::make_pair(que.front().first + 1,
@@ -63,7 +69,7 @@ bool LNFA::checkWord(std::string word) {
 
 std::vector<std::string> LNFA::lambdaClosure (const std::string& state) {
     std::vector<std::string> ret;
-    for (auto &states : Delta.getBucket(state, ".")) {
+    for (auto &states : Delta->getBucket(state, ".")) {
         ret.push_back(states);
     }
     return ret;

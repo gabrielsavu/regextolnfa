@@ -14,7 +14,9 @@ class LNFA: public Automata {
 private:
 
 public:
-    friend std::istream &operator >>(std::istream&, LNFA&);
+    friend std::istream &operator >> (std::istream&, LNFA&);
+
+    friend std::ostream &operator << (std::ostream &, LNFA&);
 
     bool checkWord(std::string);
 
